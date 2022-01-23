@@ -9,7 +9,7 @@ function displayTime(){
     let str = "";
     let timer = new Date();
     var days = new Array("Pazartesi","Sali","Carsamba","Persembe","Cuma","Cumartesi","Pazar");
-    str += timer.getHours() +":" + timer.getMinutes() + ":" + timer.getSeconds() + " , " + days[timer.getDay()+6];
+    str += timer.toLocaleTimeString() + " , " + days[timer.getDay()+6];
     document.getElementById("myClock").innerHTML= str;
 }
 setInterval(displayTime,1000);
