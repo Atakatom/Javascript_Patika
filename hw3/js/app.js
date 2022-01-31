@@ -89,6 +89,40 @@ for(let i = 0; i < categories.length; i++){
   let buttonX = document.createElement("button");
   buttonX.id = categories[i];
   buttonX.innerHTML = categories[i];
-  console.log(buttonX.id);
+  buttonX.addEventListener("click",()=>{
+    clickOn(categories[i])
+  })
   buttonDiv.appendChild(buttonX);
+}
+
+function clickOn(chosenCategory){
+  //reset the menu
+  sectionDiv.innerHTML="";
+  //create div element that holds all the foods inside
+  let sectionCenterRow = document.createElement("div")
+  for(let i=0; i < menu.length; i++){
+    if(chosenCategory == menu[i].category || chosenCategory=="All"){ 
+    //creates all the information needed for that food option  
+    let menuItemDIV = createFood(i)
+    //and appends it to the sectionCenterRow
+    sectionCenterRow.innerHTML += menuItemDIV;
+    }
+  }
+
+  function createFood(i){
+    let food = `<div class="menu-items col-lg-6 col-sm-12">
+    <img src="${menu[i].img}" class="photo">
+    <div class="menu-info">
+      <div class="menu-title">
+        <h4>${menu[i].title}</h4>
+        <h4 class="price">${menu[i].price}</h4>
+      </div>
+      <div class="menu-text">
+        ${menu[i].desc}
+      </div>
+    </div>
+  </div>`
+  return food
+  }
+  sectionDiv.appendChild(sectionCenterRow);
 }
