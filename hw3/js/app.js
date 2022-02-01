@@ -85,9 +85,14 @@ const buttonDiv = document.querySelector('.btn-container')
 const sectionDiv = document.querySelector('.section-center')
 let categories = ["All","Korea","Japan","China"];
 
+//List all menu while starting 
+for(let i = 0; i<menu.length;i++){
+  clickOn("All");
+}
+
 for(let i = 0; i < categories.length; i++){
   let buttonX = document.createElement("button");
-  buttonX.id = categories[i];
+  buttonX.class = "btn btn-outline-dark btn-item";
   buttonX.innerHTML = categories[i];
   buttonX.addEventListener("click",()=>{
     clickOn(categories[i])
